@@ -1,5 +1,3 @@
-from sklearn.base import BaseEstimator, TransformerMixin
-
 class DropColumns(BaseEstimator, TransformerMixin):
         def __init__(self, columns):
             self.columns = columns
@@ -10,8 +8,8 @@ class DropColumns(BaseEstimator, TransformerMixin):
             data = X.copy()
             # Retornamos um novo dataframe sem as colunas indesejadas
             return data.drop(labels=self.columns, axis='columns')
-            
-class CombMedias:
+
+class CombMedias(BaseEstimator, TransformerMixin):
     def __init__(self, columns, name):
         self.columns = columns
         self.name = name
@@ -29,4 +27,3 @@ class CombMedias:
         data = X.copy()
         data = data.join(data.apply(self.comb, axis=1))
         return data
-
