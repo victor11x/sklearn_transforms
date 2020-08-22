@@ -17,9 +17,8 @@ class DropColumns(BaseEstimator, TransformerMixin):
       
     def comb(self, data):
         return pd.Series([
-      np.sum([data[nota] for nota in self.columns])/len(self.columns)], index =[f'COMB_{self.name}']
-       )
-          
+        np.sum([data[nota] for nota in self.columns])/len(self.columns)], index =[f'COMB_{self.name}'])
+         
     def transform(self, X):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
